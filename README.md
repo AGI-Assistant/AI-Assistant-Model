@@ -11,6 +11,7 @@ https://github.com/Knaeckebrothero/AGI-Assistant-Model <br>
 This repository holds everything required to run the frontend of the application.<br>
 https://github.com/Knaeckebrothero/AGI-Assistant-Frontend <br>
 
+![Model](https://github.com/Knaeckebrothero/AGI-Assistant-Model/assets/104355357/a992fecd-8d4d-4e96-90a2-9ae59f6269ef)
 
 ## Table of Contents
 
