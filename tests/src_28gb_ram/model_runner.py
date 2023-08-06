@@ -3,9 +3,6 @@ def run_model(model, tokenizer, prompt: str, settings: dict) -> str:
     # Encode context the generation is conditioned on
     inputs = tokenizer.encode(prompt, return_tensors='pt')
 
-    # Convert inputs to half precision
-    inputs = inputs.half()
-
     # Move the inputs to the same device as the model
     inputs = inputs.to(model.device)
 

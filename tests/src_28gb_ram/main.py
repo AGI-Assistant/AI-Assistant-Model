@@ -16,8 +16,7 @@ app = Flask(__name__)
 # Load the model and tokenizer
 model_name = os.getenv("MODEL_PATH")
 tokenizer = AutoTokenizer.from_pretrained(model_name)
-model = AutoModelForCausalLM.from_pretrained(model_name).quarter()  # Convert model to half precision
-
+model = AutoModelForCausalLM.from_pretrained(model_name)
 
 # Check if a GPU is available and if so, move the model to the GPU
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
