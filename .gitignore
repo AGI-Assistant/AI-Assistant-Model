@@ -4,6 +4,9 @@ development/*
 # Yaml config files
 *.yaml
 
+# Environment variables
+.env
+
 # Pycharm IDE stuff
 .idea
 .idea/workspace.xml
@@ -94,4 +97,3 @@ typings/
 .node_repl_history
 *.tgz
 .yarn-integrity
-.env
