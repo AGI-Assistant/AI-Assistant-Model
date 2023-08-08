@@ -2,8 +2,12 @@
 ## Table of Contents
 - [Installation](#installation)
 - [Usage](#usage)
-- [Project Structure](#structure)
+- [Project Structure](#project-structure)
+  - [AGI-Assistant-Backend](#agi-assistant-backend)
+  - [AGI-Assistant-Model](#agi-assistant-model)
+  - [AGI-Assistant-Frontend](#agi-assistant-frontend)
 - [References](#references)
+  - [Lucidchart](#lucidchart)
 
 ## Installation
 Describe the installation process here.
@@ -18,7 +22,7 @@ pip install -r requirements.txt
 ## Usage
 ...
 
-## Structure
+## Project Structure
 ### AGI-Assistant-Backend
 This repository handles the data traffic and connects all the different components. <br>
 ### AGI-Assistant-Frontend
