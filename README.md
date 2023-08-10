@@ -36,5 +36,8 @@ Backend:   https://github.com/Knaeckebrothero/AGI-Assistant-Backend <br>
 Frontend:  https://github.com/Knaeckebrothero/AGI-Assistant-Frontend <br>
 Model:     https://github.com/Knaeckebrothero/AGI-Assistant-Model <br>
 
+### Google Drive
+https://drive.google.com/drive/folders/1Y2YULB6s9xqoHco0fPvO1QiQ1kFSJ2QU?usp=sharing
+
 ### Lucidchart
 https://lucid.app/documents#/documents?folder_id=336580960 <br>
