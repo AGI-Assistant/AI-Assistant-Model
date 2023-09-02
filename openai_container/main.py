@@ -16,26 +16,29 @@ def generate():
     else:
         # Get the input data from the request
         data = request.get_json()
-        systempromt = data.get('systemPropmt')
-        prompt = data.get('prompt')
-        userdata = data.get('userData')
-        settings = data.get('settings')
 
         # Generate the response
-        response = generate(prompt=prompt, user_data, assistant_data, temprature=settings)
+        response = generate(prompt=data['prompt'],
+                            systempromt=data['systemPrompt'],
+                            relationship=data['relationship'],
+                            temprature=data['settings']['temperature'],
+                            max_tokens=data['settings']['maxTokens'])
+        
 
-        # Return the result
+        # Return the results
         return jsonify({'response': response})
 
 
 # Use the guidance program to generate a response
 def generate(prompt str,
              systempromt str='You are a helpful digital assistant.',
-             character_relationship str='This is the first time the user meets with his new assistant.',
+             relationship str='This is the first time the user meets with his new assistant.',
              model str='gpt-3.5-turbo',
              temprature float=0.5,
              max_tokens int=256) -> str:
     
+
+
     # Define a guidance template for generating the response
     generated_template = guidance("""                 
     {{#system~}}
@@ -49,7 +52,7 @@ def generate(prompt str,
 
     {{#assistant~}}
     Here are some information about the users assistant and their relationship:
-    {{character_relationship}}
+    {{relationship}}
     {{~/assistant}}
                                   
     {{#assistant~}}
@@ -70,9 +73,6 @@ if __name__ == '__main__':
     # Load the environment variables
     load_dotenv(find_dotenv())
     backend_key = os.getenv('BACKEND_API_KEY')
-
-    # Set default language model
-    generate()
 
     # Start the app
     app.run(host='0.0.0.0', port=5000)
