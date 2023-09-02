@@ -22,15 +22,21 @@ def generate():
         settings = data.get('settings')
 
         # Generate the response
-        response = generate(system_promt, prompt, user_data, assistant_data, temprature=settings)
+        response = generate(prompt=prompt, user_data, assistant_data, temprature=settings)
 
         # Return the result
         return jsonify({'response': response})
 
 
-# Method to generate text
-def generate(prompt str, systempromt str='You are a helpful digital assistant.', character_relationship str='', temprature float=0.5, max_tokens int=256) -> | str:
-    # Define a guidance program that adapts a proverb
+# Use the guidance program to generate a response
+def generate(prompt str,
+             systempromt str='You are a helpful digital assistant.',
+             character_relationship str='This is the first time the user meets with his new assistant.',
+             model str='gpt-3.5-turbo',
+             temprature float=0.5,
+             max_tokens int=256) -> str:
+    
+    # Define a guidance template for generating the response
     generated_template = guidance("""                 
     {{#system~}}
     {{systempromt}}
@@ -38,7 +44,7 @@ def generate(prompt str, systempromt str='You are a helpful digital assistant.',
 
     {{#user~}}
     Here are some information about the user:
-    {{input}}
+    {{prompt}}
     {{~/user}}
 
     {{#assistant~}}
@@ -49,7 +55,7 @@ def generate(prompt str, systempromt str='You are a helpful digital assistant.',
     {{#assistant~}}
     {{gen 'response' {{temperature}} {{max_tokens}}}}
     {{~/assistant}}
-    """)
+    """, prompt=prompt, systempromt=systempromt, character_relationship=character_relationship, temperature=temprature, max_tokens=max_tokens, model=model)
     
     # Generate the response
     try:
@@ -66,7 +72,7 @@ if __name__ == '__main__':
     backend_key = os.getenv('BACKEND_API_KEY')
 
     # Set default language model
-    guidance.llm = guidance.llms.OpenAI("gpt-3.5-turbo")
+    generate()
 
     # Start the app
     app.run(host='0.0.0.0', port=5000)
