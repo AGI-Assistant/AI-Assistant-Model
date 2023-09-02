@@ -16,23 +16,49 @@ def generate():
     else:
         # Get the input data from the request
         data = request.get_json()
+        systempromt = data.get('systemPropmt')
         prompt = data.get('prompt')
+        userdata = data.get('userData')
         settings = data.get('settings')
 
-        # Generate the output using the model and tokenizer
-        output_text = run_model(model, tokenizer, prompt, settings)
+        # Generate the response
+        response = generate(system_promt, prompt, user_data, assistant_data, temprature=settings)
 
         # Return the result
-        return jsonify({'result': output_text})
+        return jsonify({'response': response})
 
 
 # Method to generate text
-def openai_generate(prompt, settings):
-    # Generate the output using the model and tokenizer
-    output_text = run_model(model, tokenizer, prompt, settings)
+def generate(prompt str, systempromt str='You are a helpful digital assistant.', character_relationship str='', temprature float=0.5, max_tokens int=256) -> | str:
+    # Define a guidance program that adapts a proverb
+    generated_template = guidance("""                 
+    {{#system~}}
+    {{systempromt}}
+    {{~/system}}
+
+    {{#user~}}
+    Here are some information about the user:
+    {{input}}
+    {{~/user}}
+
+    {{#assistant~}}
+    Here are some information about the users assistant and their relationship:
+    {{character_relationship}}
+    {{~/assistant}}
+                                  
+    {{#assistant~}}
+    {{gen 'response' {{temperature}} {{max_tokens}}}}
+    {{~/assistant}}
+    """)
+    
+    # Generate the response
+    try:
+        generated_text = generated_template()
+    except Exception as e:
+        generated_text = str(e)
 
     # Return the result
-    return jsonify({'result': output_text})
+    return generated_text
 
 if __name__ == '__main__':
     # Load the environment variables
