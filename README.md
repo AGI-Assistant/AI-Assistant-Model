@@ -10,14 +10,31 @@
   - [Lucidchart](#lucidchart)
 
 ## Installation
-Describe the installation process here.
-Include any pre-requisites, required libraries, and how to get the development environment running.
+Since this repository contains multiple models, the installation process is
+split into multiple parts. <br>
+Depending on which model you want to use, you need to follow the corresponding installation guide. <br>
 
-### Example command line instructions
-```
-bash
+### Installing the OpenAI Models locally
+1. To use the OpenAI API, you need to create an account and get an API key. <br>
+2. Use the .env.example file to create a .env file. <br>
+3. Add your API keys to the .env file (Backend & OpenAi). <br>
+4. Install the requirements.txt file. <br>
+```bash
 pip install -r requirements.txt
 ```
+5. To start the application locally, you run the src_openai/main.py file. <br>
+```bash
+src_openai/main.py
+```
+
+### Building the Docker Image for the OpenAI Models
+...
+
+### Llama Models
+...
+
+### Building the Docker Image for the Llama Models
+...
 
 ## Usage
 ...

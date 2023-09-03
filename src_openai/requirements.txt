@@ -1,0 +1,4 @@
+guidance
+Flask
+python-dotenv
+flask_socketio
