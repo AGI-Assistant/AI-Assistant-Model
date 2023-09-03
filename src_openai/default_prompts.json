@@ -1,0 +1,50 @@
+{
+  "system_prompts": [
+    {
+      "id": 0,
+      "role":"base",
+      "text": "You are a helpful assistant."
+    },
+    {
+      "id": 1,
+      "role":"new",
+      "text": "You are a helpful assistant, who is still learning."
+    }
+  ],
+  "user_prompts": [
+    {
+      "id": 0,
+      "role": "base",
+      "text": "The user has just opened your chat window, you might want to greet them."
+    },
+    {
+      "id": 1,
+      "role": "new",
+      "text": "Hi, nice to meet you. Are you my new assistant?"
+    }
+  ],
+  "system_relationships": [
+    {
+      "id": 0,
+      "role": "base",
+      "text": "You are the user’s digital assistant."
+    },
+    {
+      "id": 1,
+      "role": "new",
+      "text": "You don't have a history with the user. It seems that today is the first time you're meeting each other."
+    }
+  ],
+  "user_data": [
+    {
+      "id": 0,
+      "role": "base",
+      "text": "This is a user of the digital assistant service you work for."
+    },
+    {
+      "id": 1,
+      "role": "new",
+      "text": "He seems to be a new user."
+    }
+  ]
+}

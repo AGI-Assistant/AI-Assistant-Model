@@ -48,14 +48,10 @@ def model_generate(
     # Define a guidance template for generation
     generated_template = guidance.Program("""                
     {{#system~}}
-    {{system_prompt}}
-    Following is some additional information to provide you with the context of the conversation.
-    The User:
-    {{user_data}}
-    Their relationship:
-    {{relationship}}
-    Additional context:
-    {{context}}
+    You are: {{system_prompt}}
+    The user: {{user_data}}
+    Their relationship: {{relationship}}
+    Additional context: {{context}}
     {{~/system}}
 
     {{#user~}}
