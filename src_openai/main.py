@@ -84,8 +84,11 @@ def api_generate():
     It then calls the model_generate function to generate a response
     and sends back the result.
 
-    Args:
-        prompt + context (application/json): A JSON object containing all the
+    Headers:
+        backendKey (str): The API key used to access the endpoint.
+    
+    Body:
+        data (application/json): A JSON object containing all the
         required data, including the prompt and all contexts.
 
     Returns:
@@ -94,7 +97,7 @@ def api_generate():
         The dictionary also contains a status code.
     """
     # Check the API key
-    if request.headers.get('BeKey') != backend_key:
+    if request.headers.get('backendKey') != backend_key:
         # Return an error if the API key is invalid
         return {'message': 'Invalid API key'}, 403
     else:
