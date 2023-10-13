@@ -27,7 +27,7 @@ def model_generate(
     """
     This function takes all the data and generates a response using the OpenAI API.
     It does so by using the guidance library to generate a template, which
-     is then filled with the data and used to generate the response.
+    is then filled with the data and used to generate the response.
 
     Args:
         prompt (str): The user's prompt.
