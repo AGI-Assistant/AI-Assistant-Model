@@ -39,7 +39,7 @@ def model_generate(
         # Generate the response
         generated_text = generated_template(
             system_prompt, prompt, relationship, temperature, max_tokens)
-    # If an error occurs, return the error message instead
+    # If an error occurs, return the error package instead
     except Exception as e:
         generated_text = str(e)
 

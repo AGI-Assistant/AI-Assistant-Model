@@ -39,7 +39,7 @@ def model_generate(
 
     Returns:
         dict (answer or exception (str), status (int)): A dictionary holding
-        the generated answer as a string or the exception message if an error has occurred.
+        the generated answer as a string or the exception package if an error has occurred.
         The dictionary also contains a status code.
     """
     # Set the model used for generating the response
@@ -72,7 +72,7 @@ def model_generate(
         # Return the generated response
         return {'answer': generated_text, 'status': 200}
     except Exception as e:
-        # If an error has occurred, return the error message instead
+        # If an error has occurred, return the error package instead
         return {'exception': str(e), 'status': 500}
 
 
@@ -93,13 +93,13 @@ def api_generate():
 
     Returns:
         json-body (application/json): A JSON object holding the generated
-        answer as a string or the exception message if an error has occurred.
+        answer as a string or the exception package if an error has occurred.
         The dictionary also contains a status code.
     """
     # Check the API key
     if request.headers.get('backendKey') != backend_key:
         # Return an error if the API key is invalid
-        return {'message': 'Invalid API key'}, 403
+        return {'package': 'Invalid API key'}, 403
     else:
         # Get the input data from the request
         data = request.get_json()
