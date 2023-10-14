@@ -27,7 +27,7 @@ def model_generate(
     """
     This function takes all the data and generates a response using the OpenAI API.
     It does so by using the guidance library to generate a template, which
-     is then filled with the data and used to generate the response.
+    is then filled with the data and used to generate the response.
 
     Args:
         prompt (str): The user's prompt.
@@ -48,14 +48,10 @@ def model_generate(
     # Define a guidance template for generation
     generated_template = guidance.Program("""                
     {{#system~}}
-    {{system_prompt}}
-    Following is some additional information to provide you with the context of the conversation.
-    The User:
-    {{user_data}}
-    Their relationship:
-    {{relationship}}
-    Additional context:
-    {{context}}
+    You are: {{system_prompt}}
+    The user: {{user_data}}
+    Their relationship: {{relationship}}
+    Additional context: {{context}}
     {{~/system}}
 
     {{#user~}}
@@ -88,8 +84,11 @@ def api_generate():
     It then calls the model_generate function to generate a response
     and sends back the result.
 
-    Args:
-        prompt + context (application/json): A JSON object containing all the
+    Headers:
+        backendKey (str): The API key used to access the endpoint.
+    
+    Body:
+        data (application/json): A JSON object containing all the
         required data, including the prompt and all contexts.
 
     Returns:
@@ -98,7 +97,7 @@ def api_generate():
         The dictionary also contains a status code.
     """
     # Check the API key
-    if request.headers.get('BeKey') != backend_key:
+    if request.headers.get('backendKey') != backend_key:
         # Return an error if the API key is invalid
         return {'message': 'Invalid API key'}, 403
     else:
