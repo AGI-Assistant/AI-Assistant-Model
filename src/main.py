@@ -36,4 +36,3 @@ if __name__ == '__main__':
             return package.content_text(full_text_content=generated_content)
         except Exception as e:
             return package.content_text(error_occurred=str(e))
-            
