@@ -28,7 +28,7 @@ model = model.to(device)
 def generate():
     # Check for API key
     if request.headers.get('X-API-Key') != 'Sd%7Rz#cdd2c65Uv@%Z':
-        return jsonify({'message': 'Invalid API key'}), 403
+        return jsonify({'package': 'Invalid API key'}), 403
 
     # Get the input data from the request
     data = request.get_json()

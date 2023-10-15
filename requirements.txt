@@ -1,0 +1,6 @@
+replicate~=0.15.4
+openai~=0.27.8
+python-dotenv~=1.0.0
+fastapi~=0.98.0
+uvicorn
+
